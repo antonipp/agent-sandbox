@@ -221,7 +221,7 @@ func (cl *ClusterClient) PortForward(ctx context.Context, pod types.NamespacedNa
 		}
 		cl.Log("killing port-forward")
 		if err := portForward.Process.Kill(); err != nil {
-			cl.Errorf("failed to kill port-forward: %s", err)
+			cl.Logf("failed to kill port-forward (likely already exited): %s", err)
 		}
 	}
 	cl.T.Cleanup(stopProcess)
